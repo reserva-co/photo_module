@@ -1,17 +1,26 @@
 {
-  "name": "",
+  "name": "photo_module",
   "version": "",
   "description": "",
+  "private": true,
   "author": "",
-  "license": "",
+  "url": "https://github.com/reserva-co/photo_module.git",
+  "license": "unlicensed",
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "dependencies": {
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react-hooks": "^2.0.1",
+    "react": "^16.9.0"
   },
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint": "^6.2.1",
+    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor",
+    "eslint-plugin-react": "^7.14.3",
+    "webpack": "^4.39.2",
+    "webpack-cli": "^3.3.7"
   }
 }
