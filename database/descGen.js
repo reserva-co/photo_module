@@ -1,4 +1,4 @@
-import birdsArray = require('./birdArray.js');
+const birdsArray = require('./birdsArray.js');
 
 var descGen = function () {
   let text = [];

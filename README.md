@@ -34,5 +34,11 @@ From within the root directory:
 
 ```sh
 npm install -g webpack
-npm install
+npm install webpack-cli
+npm install babel-loader
+npm install react-dom
+npm install react
+npm install @babel/core
+npm install @babel/preset-env
+npm install @babel/preset-react
 ```
