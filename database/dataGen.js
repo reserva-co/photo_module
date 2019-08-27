@@ -38,6 +38,6 @@ function generator(houseNum) {
   });
 }
 
-for (let z = 0; z < 10; z += 1) {
+for (let z = 0; z < 100; z += 1) {
   generator(z);
 }

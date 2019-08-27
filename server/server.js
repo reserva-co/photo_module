@@ -7,7 +7,7 @@ const model = require('../database/dbconnect.js');
 app.use(express.json());
 
 app.get('/api/:reserva_id', (req, res) => {
-  model.BirdHouse.find({ reserva_id: req.body.reserva_id }, (err, birdhouse) => {
+  model.BirdHouse.find({ reserva_id: req.params.reserva_id }, (err, birdhouse) => {
     if (err) {
       console.log('err', err);
     } else {
