@@ -23,7 +23,7 @@ function generator(houseNum) {
     };
     imageSlide.desc = descGen();
     imageSlide.verified = Math.floor(Math.random() * 8) > 0;
-    imageSlide.url = `https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse${num()}.jpg`;
+    imageSlide.url = `https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse${num()}.png`;
     current.images.push(imageSlide);
   }
   for (let x = 0; x < qty; x += 1) {

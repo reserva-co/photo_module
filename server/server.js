@@ -2,22 +2,26 @@ const express = require('express');
 
 const app = express();
 const port = 3000;
-const model = require('./database/dbconnect.js');
+const model = require('../database/dbconnect.js');
+
+app.use(express.json());
 
 app.get('/api/:reserva_id', (req, res) => {
-  model.BirdHouse.find({ reserva_id: req.param }, (err, birdhouse) => {
+  model.BirdHouse.find({ reserva_id: req.body.reserva_id }, (err, birdhouse) => {
     if (err) {
-      console.log(err);
+      console.log('err', err);
     } else {
       res.send(birdhouse);
     }
   });
-  // allow endpoints to include a number
-  // respond with db query
+});
+
+app.get('/api/', (req, res) => {
+  res.send('GET received');
 });
 
 app.get('/', (req, res) => {
-  console.log('Hello world');
+  res.send('Hello world');
 });
 
 app.listen(port, () => console.log(`Listening on port ${port}`));
