@@ -1,6 +1,6 @@
 const { num, imageGen, genInstance, generator } = require('../database/dataGen.js');
 
-test('num produces a number between 0-100', () => {
+test('num produces an integer between 0-100 as a string', () => {
   const number = num();
   expect(typeof number).toBe('string');
   expect(Number(number)).toBeGreaterThanOrEqual(0);
@@ -9,7 +9,7 @@ test('num produces a number between 0-100', () => {
   expect(split.length).toBe(1);
 });
 
-test('imageGen', () => {
+test('imageGen creates image obj', () => {
   const obj = imageGen(15);
   expect(obj.slide_id).toBe(15);
   expect(typeof obj.desc).toBe('string');

@@ -5,6 +5,12 @@
     "clearMocks": true,
     "coverageDirectory": "coverage",
     "testEnvironment": "node",
+    "setupFiles": [
+      "./test/setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>test/setup.js"
+    ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/*.{js,jsx}",
@@ -60,6 +66,7 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
     "nodemon": "^1.19.1",
+    "react-test-renderer": "^16.9.0",
     "webpack": "^4.39.2",
     "webpack-cli": "^3.3.7"
   }
