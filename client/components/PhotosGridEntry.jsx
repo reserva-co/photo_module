@@ -37,9 +37,8 @@ class PhotosGridEntry extends React.Component {
   }
 }
 
-// PhotosGridEntry.propTypes = {
-//   photo: PropTypes.object.isRequired,
-// };
+PhotosGridEntry.propTypes = {
+};
 
 
 export default PhotosGridEntry;
