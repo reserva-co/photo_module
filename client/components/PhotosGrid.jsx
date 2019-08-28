@@ -1,14 +1,14 @@
 import React from 'react';
 
-class PhotosGrid extends React.Components {
+class PhotosGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
   render() {
+    // photo grid
     return (
-      // photo grid
       <div>
       Photos Grid
       </div>
