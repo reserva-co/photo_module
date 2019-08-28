@@ -1,6 +1,6 @@
 # Photo Module for SEC Project
 
-> Project description
+> Photo module of a hotel booking web app.
 
 ## Related Projects
 
@@ -17,7 +17,9 @@
 
 ## Usage
 
-> Some usage instructions
+* Start webpack: `npm run build`  
+* Seed database: `npm run seed`  
+* Start server with nodemon: `npm run start`
 
 ## Requirements
 
