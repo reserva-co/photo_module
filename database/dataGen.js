@@ -39,8 +39,6 @@ function generator(loopNum) {
   instance.save((err) => {
     if (err) {
       console.log(err);
-    } else {
-      console.log('Success');
     }
   });
 }
