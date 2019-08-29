@@ -8,7 +8,7 @@ const PhotosModuleDiv = styled.div`
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 300px;
+  height: 350px;
   padding: none;
   margin: none;
   overflow: hidden;
@@ -18,16 +18,20 @@ const HeroImageDiv = styled.div`
   float: left;
   box-sizing: border-box;
   width: 50%;
-  height: 300px;
+  height: 350px;
   border: 1px solid #444;
   overflow: hidden;
   position: relative;
 `;
 
+const HeroImageDivFull = styled(HeroImageDiv)`
+  width: 100%;
+`;
+
 const MainImage = styled.img`
   width: 100%;
-  min-width: 400px;
-  min-height: 300px;
+  min-width: 425px;
+  min-height: 350px;
   height: auto;
   margin: none;
 `;
@@ -44,9 +48,10 @@ class Photos extends React.Component {
     const { listingId } = this.props;
     console.log('ID Photos mount:', listingId);
     axios.get(`/api/${listingId}`)
+    // axios.get(`/api/88`)
       .then((info) => {
         this.setState({ photos: info.data[0].images });
-        // console.log('Photos', info.data[0]);
+        console.log('Photos', info.data[0].images.length);
       })
       .catch((err) => { console.log(err); });
   }
@@ -58,6 +63,15 @@ class Photos extends React.Component {
     // page dynamically renders if width falls below certain amount
     const { photos } = this.state;
     if (photos.length > 0) {
+      if (photos.length === 1) {
+        return (
+          <PhotosModuleDiv>
+            <HeroImageDivFull>
+              <MainImage src={photos[0].url} alt="Main display" />
+            </HeroImageDivFull>
+          </PhotosModuleDiv>
+        );
+      }
       return (
         <PhotosModuleDiv>
           <HeroImageDiv>

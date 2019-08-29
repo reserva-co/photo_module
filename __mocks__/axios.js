@@ -13,28 +13,28 @@ module.exports = {
             "slide_id": 0,
             "desc": "Southern pochard. Citreoline trogon!",
             "verified": false,
-            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse032.png"
+            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse032.jpg"
           },
           {
             "_id": "5d64c1e10bd620e32d5071d9",
             "slide_id": 1,
             "desc": "Red-vented barbet! White-bellied woodstar - Orange-fronted fruit dove.",
             "verified": true,
-            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse015.png"
+            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse015.jpg"
           },
           {
             "_id": "5d64c1e10bd620e32d5071da",
             "slide_id": 2,
             "desc": "Common yellowthroat - Plain pigeon - Micronesian megapode.",
             "verified": true,
-            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse009.png"
+            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse009.jpg"
           },
           {
             "_id": "5d64c1e10bd620e32d5071db",
             "slide_id": 3,
             "desc": "Common tailorbird. Song thrush.",
             "verified": true,
-            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse065.png"
+            "url": "https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse065.jpg"
           },
         ],
         "__v": 0,
