@@ -25,18 +25,18 @@ class PhotosGrid extends React.Component {
     if (photos.length > 5) {
       return (
         <GridDiv>
-          <PhotosGridEntry photo={photos[1]} />
-          <PhotosGridEntry photo={photos[2]} />
-          <PhotosGridEntry photo={photos[3]} />
-          <PhotosGridEntry photo={photos[4]} />
+          <PhotosGridEntry key={photos[1].slide_id} photo={photos[1]} />
+          <PhotosGridEntry key={photos[2].slide_id} photo={photos[2]} />
+          <PhotosGridEntry key={photos[3].slide_id} photo={photos[3]} />
+          <PhotosGridEntry key={photos[4].slide_id} photo={photos[4]} />
         </GridDiv>
       );
     } 
     const photosShift = photos.slice(1);
     return (
       <GridDiv>
-        {photosShift.map(photo => {
-          return <PhotosGridEntry photo={photo} />
+        {photosShift.map((photo) => {
+          return <PhotosGridEntry key={photo.slide_id} photo={photo} />
         })}
       </GridDiv>
     )

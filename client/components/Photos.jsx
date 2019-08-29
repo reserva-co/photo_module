@@ -44,7 +44,7 @@ class Photos extends React.Component {
     axios.get(`/api/${listingId}`)
       .then((info) => {
         this.setState({ photos: info.data[0].images });
-        console.log('Photos', info.data[0]);
+        // console.log('Photos', info.data[0]);
       })
       .catch((err) => { console.log(err); });
   }
