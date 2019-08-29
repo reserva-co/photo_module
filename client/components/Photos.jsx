@@ -26,6 +26,8 @@ const HeroImageDiv = styled.div`
 
 const MainImage = styled.img`
   width: 100%;
+  min-width: 400px;
+  min-height: 300px;
   height: auto;
   margin: none;
 `;

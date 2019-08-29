@@ -15,6 +15,8 @@ const PhotosGridDiv = styled.div`
 
 const PhotosGridImg = styled.img`
   width: 100%;
+  min-width: 200px;
+  min-height: 150px;
   height: auto;
   margin: none;
 `;
