@@ -4,7 +4,7 @@
     "verbose": true,
     "clearMocks": true,
     "coverageDirectory": "coverage",
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "setupFiles": [
       "./test/setup.js"
     ],
@@ -65,6 +65,7 @@
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-react-hooks": "^1.7.0",
     "jest": "^24.9.0",
+    "jsdom": "^15.1.1",
     "nodemon": "^1.19.1",
     "react-test-renderer": "^16.9.0",
     "webpack": "^4.39.2",
