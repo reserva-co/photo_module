@@ -17,7 +17,7 @@ function imageGen(idNum) {
   };
   imageSlide.desc = descGen();
   imageSlide.verified = Math.floor(Math.random() * 8) > 0;
-  imageSlide.url = `https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse${num()}.png`;
+  imageSlide.url = `https://birdhouse325.s3-us-west-1.amazonaws.com/birdhouse${num()}.jpg`;
   return imageSlide;
 }
 

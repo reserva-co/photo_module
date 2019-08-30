@@ -21,25 +21,28 @@ class PhotosGrid extends React.Component {
   render() {
     // photo grid
     const { photos } = this.props;
-    console.log('Number of images:', photos.length);
-    if (photos.length > 5) {
-      return (
-        <GridDiv>
-          <PhotosGridEntry key={photos[1].slide_id} photo={photos[1]} />
-          <PhotosGridEntry key={photos[2].slide_id} photo={photos[2]} />
-          <PhotosGridEntry key={photos[3].slide_id} photo={photos[3]} />
-          <PhotosGridEntry key={photos[4].slide_id} photo={photos[4]} />
-        </GridDiv>
-      );
-    } 
-    const photosShift = photos.slice(1);
+    let maxDisplay;
+    let wideGrid = false;
+    let fullGrid = false;
+    if (photos.length >= 5) {
+      maxDisplay = 5;
+    } else if (photos.length === 4 || photos.length === 3) {
+      maxDisplay = 3;
+      wideGrid = true;
+    } else {
+      maxDisplay = photos.length;
+      wideGrid = true;
+      fullGrid = true;
+    }
+    const imageArray = [];
+    for (let i = 1; i < maxDisplay; i+= 1) {
+      imageArray.push(<PhotosGridEntry key={photos[i].slide_id} photo={photos[i]} wideGrid={wideGrid} fullGrid={fullGrid} />)
+    }
     return (
       <GridDiv>
-        {photosShift.map((photo) => {
-          return <PhotosGridEntry key={photo.slide_id} photo={photo} />
-        })}
+        {imageArray}
       </GridDiv>
-    )
+    );
   }
 }
 

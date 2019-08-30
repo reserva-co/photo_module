@@ -8,7 +8,7 @@ const PhotosModuleDiv = styled.div`
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 300px;
+  height: 350px;
   padding: none;
   margin: none;
   overflow: hidden;
@@ -18,16 +18,57 @@ const HeroImageDiv = styled.div`
   float: left;
   box-sizing: border-box;
   width: 50%;
-  height: 300px;
+  height: 350px;
   border: 1px solid #444;
   overflow: hidden;
   position: relative;
 `;
 
+const HeroImageDivFull = styled(HeroImageDiv)`
+  width: 100%;
+`;
+
 const MainImage = styled.img`
   width: 100%;
+  min-width: 425px;
+  min-height: 350px;
   height: auto;
   margin: none;
+`;
+
+const FloatButton = styled.div`
+  display: block;
+  height: 33px;
+  text-align: center;
+  box-sizing: border-box;
+  background: #fff;
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  z-index: 100;
+  font-family: helvetica, arial, 'sans serif';
+  font-size: 14px;
+  line-height: 17px;
+  color: #333;
+  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const SharePhotosButton = styled(FloatButton)`
+  right: 115px;
+`;
+
+const SaveButton = styled(FloatButton)`
+  right: 25px;
+`;
+
+const ViewPhotosButton = styled(FloatButton)`
+  top: 290px;
 `;
 
 class Photos extends React.Component {
@@ -42,9 +83,10 @@ class Photos extends React.Component {
     const { listingId } = this.props;
     console.log('ID Photos mount:', listingId);
     axios.get(`/api/${listingId}`)
+    // axios.get(`/api/88`)
       .then((info) => {
         this.setState({ photos: info.data[0].images });
-        // console.log('Photos', info.data[0]);
+        console.log('Photos', info.data[0].images.length);
       })
       .catch((err) => { console.log(err); });
   }
@@ -55,9 +97,25 @@ class Photos extends React.Component {
     // if 3 photos or less, hero photo is 2/3 of page width
     // page dynamically renders if width falls below certain amount
     const { photos } = this.state;
+    const buttons = [
+      <SharePhotosButton>⇪ Share</SharePhotosButton>,
+      <SaveButton>♡ Save</SaveButton>,
+      <ViewPhotosButton>View Photos</ViewPhotosButton>
+    ];
     if (photos.length > 0) {
+      if (photos.length === 1) {
+        return (
+          <PhotosModuleDiv>
+            {buttons}
+            <HeroImageDivFull>
+              <MainImage src={photos[0].url} alt="Main display" />
+            </HeroImageDivFull>
+          </PhotosModuleDiv>
+        );
+      }
       return (
         <PhotosModuleDiv>
+          {buttons}
           <HeroImageDiv>
             <MainImage src={photos[0].url} alt="Main display" />
           </HeroImageDiv>

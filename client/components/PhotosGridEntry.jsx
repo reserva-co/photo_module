@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const PhotosGridDiv = styled.div`
   float: left;
   box-sizing: border-box;
-  width: 50%;
-  height: 150px;
+  width: ${props => (props.wideGrid ? '100%' : '50%')};
+  height: ${props => (props.fullGrid ? '100%' : '175px')};
   border: 1px solid #444;
   margin: none;
   padding: none;
@@ -15,6 +15,8 @@ const PhotosGridDiv = styled.div`
 
 const PhotosGridImg = styled.img`
   width: 100%;
+  min-width: 225px;
+  min-height: 175px;
   height: auto;
   margin: none;
 `;
@@ -28,9 +30,10 @@ class PhotosGridEntry extends React.Component {
   }
 
   render() {
+    console.log('wideGrid', this.props.wideGrid);
     const { photo } = this.props;
     return (
-      <PhotosGridDiv>
+      <PhotosGridDiv photo={photo} wideGrid={this.props.wideGrid} fullGrid={this.props.fullGrid} >
         <PhotosGridImg src={photo.url} alt={photo.desc} />
       </PhotosGridDiv>
     )
