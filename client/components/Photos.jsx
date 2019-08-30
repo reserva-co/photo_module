@@ -36,6 +36,41 @@ const MainImage = styled.img`
   margin: none;
 `;
 
+const FloatButton = styled.div`
+  display: block;
+  height: 33px;
+  text-align: center;
+  box-sizing: border-box;
+  background: #fff;
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  z-index: 100;
+  font-family: helvetica, arial, 'sans serif';
+  font-size: 14px;
+  line-height: 17px;
+  color: #333;
+  box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const SharePhotosButton = styled(FloatButton)`
+  right: 115px;
+`;
+
+const SaveButton = styled(FloatButton)`
+  right: 25px;
+`;
+
+const ViewPhotosButton = styled(FloatButton)`
+  top: 290px;
+`;
+
 class Photos extends React.Component {
   constructor(props) {
     super(props);
@@ -62,10 +97,16 @@ class Photos extends React.Component {
     // if 3 photos or less, hero photo is 2/3 of page width
     // page dynamically renders if width falls below certain amount
     const { photos } = this.state;
+    const buttons = [
+      <SharePhotosButton>⇪ Share</SharePhotosButton>,
+      <SaveButton>♡ Save</SaveButton>,
+      <ViewPhotosButton>View Photos</ViewPhotosButton>
+    ];
     if (photos.length > 0) {
       if (photos.length === 1) {
         return (
           <PhotosModuleDiv>
+            {buttons}
             <HeroImageDivFull>
               <MainImage src={photos[0].url} alt="Main display" />
             </HeroImageDivFull>
@@ -74,6 +115,7 @@ class Photos extends React.Component {
       }
       return (
         <PhotosModuleDiv>
+          {buttons}
           <HeroImageDiv>
             <MainImage src={photos[0].url} alt="Main display" />
           </HeroImageDiv>
