@@ -30,11 +30,10 @@ class PhotosGridEntry extends React.Component {
   }
 
   render() {
-    console.log('wideGrid', this.props.wideGrid);
-    const { photo } = this.props;
+    const { photo, openSlideShow, wideGrid, fullGrid } = this.props;
     return (
-      <PhotosGridDiv photo={photo} wideGrid={this.props.wideGrid} fullGrid={this.props.fullGrid} >
-        <PhotosGridImg src={photo.url} alt={photo.desc} />
+      <PhotosGridDiv photo={photo} wideGrid={wideGrid} fullGrid={fullGrid} >
+        <PhotosGridImg src={photo.url} alt={photo.desc} onClick={openSlideShow}/>
       </PhotosGridDiv>
     )
   }
