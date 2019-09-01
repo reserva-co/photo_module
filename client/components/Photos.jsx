@@ -114,9 +114,9 @@ class Photos extends React.Component {
     // page dynamically renders if width falls below certain amount
     const { photos, slideshow } = this.state;
     const buttons = [
-      <SharePhotosButton>⇪ Share</SharePhotosButton>,
-      <SaveButton>♡ Save</SaveButton>,
-      <ViewPhotosButton>View Photos</ViewPhotosButton>,
+      <SharePhotosButton key='share'>⇪ Share</SharePhotosButton>,
+      <SaveButton key='save'>♡ Save</SaveButton>,
+      <ViewPhotosButton key='view'>View Photos</ViewPhotosButton>,
     ];
     if (slideshow) {
       return <SlideShow photos={photos} closeSlideShow={this.closeSlideShow} />;

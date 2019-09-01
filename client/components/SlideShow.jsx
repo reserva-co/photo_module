@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   display: flex;
@@ -31,6 +32,10 @@ const Arrows = styled(DisplayPanel)`
   padding: 20px;
   font-family: 'century gothic', helvetica, arial, 'sans-serif';
   font-size: 30px;
+    
+  &:hover {
+    cursor: pointer; 
+  }
 `;
 
 const Gallery = styled.div`
@@ -80,8 +85,30 @@ class SlideShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: this.props.photos[0]
+      current: this.props.photos[0],
     };
+    this.nextImage = this.nextImage.bind(this);
+    this.prevImage = this.prevImage.bind(this);
+  }
+
+  nextImage() {
+    const { photos } = this.props;
+    let next = this.state.current.slide_id + 1;
+    if (next <= photos.length - 1) {
+      this.setState({ current: photos[next] });
+    } else {
+      this.setState({ current: photos[0] });
+    }
+  }
+
+  prevImage() {
+    const { photos } = this.props;
+    const prev = this.state.current.slide_id - 1;
+    if (prev >= 0) {
+      this.setState({ current: photos[prev] });
+    } else {
+      this.setState({ current: photos[photos.length - 1] });
+    }
   }
 
   render() {
@@ -90,11 +117,11 @@ class SlideShow extends React.Component {
     return (
       <Container>
         <Display>
-          <Arrows>{'〈'}</Arrows>
+          <Arrows onClick={this.prevImage}>〈</Arrows>
           <DisplayPanel>
             <MainImage src={current.url} />
           </DisplayPanel>
-          <Arrows>{'〉'}</Arrows>
+          <Arrows onClick={this.nextImage}>〉</Arrows>
         </Display>
         <Gallery>
           <BigX onClick={closeSlideShow}>✕</BigX>
@@ -103,7 +130,7 @@ class SlideShow extends React.Component {
             {photos.map((photo) => (<GalleryImg src={photo.url} key={photo.slide_id} />))}
           </GalleryImgDiv>
           <br />
-          <span style={{fontWeight: 'bold' }}>
+          <span style={{ fontWeight: 'bold' }}>
             {`${current.slide_id + 1} / ${photos.length}`}
           </span>
           <br />
@@ -111,7 +138,7 @@ class SlideShow extends React.Component {
             {current.desc}
           </span>
           <br />
-          <span style={{fontSize: '13px' }}>
+          <span style={{ fontSize: '13px' }}>
             {current.verified ? 'Photo Verified By Birbnb' : ''}
           </span>
 
@@ -120,5 +147,14 @@ class SlideShow extends React.Component {
     )
   }
 }
+SlideShow.propType = {
+  photos: PropTypes.arrayOf(
+    PropTypes.shape({
+      slide_id: PropTypes.number.isRequired,
+      url: PropTypes.string.isRequired,
+      desc: PropTypes.string.isRequired,
+    }),
+  ),
+}.isRequired;
 
 export default SlideShow;
