@@ -20,7 +20,7 @@ class PhotosGrid extends React.Component {
 
   render() {
     // photo grid
-    const { photos } = this.props;
+    const { photos, openSlideShow } = this.props;
     let maxDisplay;
     let wideGrid = false;
     let fullGrid = false;
@@ -36,7 +36,7 @@ class PhotosGrid extends React.Component {
     }
     const imageArray = [];
     for (let i = 1; i < maxDisplay; i+= 1) {
-      imageArray.push(<PhotosGridEntry key={photos[i].slide_id} photo={photos[i]} wideGrid={wideGrid} fullGrid={fullGrid} />)
+      imageArray.push(<PhotosGridEntry key={photos[i].slide_id} photo={photos[i]} wideGrid={wideGrid} fullGrid={fullGrid} openSlideShow={openSlideShow}/>)
     }
     return (
       <GridDiv>

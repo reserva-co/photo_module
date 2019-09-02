@@ -3,6 +3,7 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PhotosGrid from './PhotosGrid.jsx';
+import SlideShow from './SlideShow.jsx';
 
 const PhotosModuleDiv = styled.div`
   display: block;
@@ -12,6 +13,10 @@ const PhotosModuleDiv = styled.div`
   padding: none;
   margin: none;
   overflow: hidden;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const HeroImageDiv = styled.div`
@@ -45,7 +50,7 @@ const FloatButton = styled.div`
   position: absolute;
   right: 25px;
   top: 20px;
-  padding: 8px 15px;
+  padding: 10px 15px;
   border-radius: 4px;
   z-index: 100;
   font-family: helvetica, arial, 'sans serif';
@@ -60,7 +65,7 @@ const FloatButton = styled.div`
 `;
 
 const SharePhotosButton = styled(FloatButton)`
-  right: 115px;
+  right: 123px;
 `;
 
 const SaveButton = styled(FloatButton)`
@@ -76,7 +81,11 @@ class Photos extends React.Component {
     super(props);
     this.state = {
       photos: [],
+      slideshow: false,
+      currentId: null,
     };
+    this.openSlideShow = this.openSlideShow.bind(this);
+    this.closeSlideShow = this.closeSlideShow.bind(this);
   }
 
   componentDidMount() {
@@ -91,23 +100,35 @@ class Photos extends React.Component {
       .catch((err) => { console.log(err); });
   }
 
+  openSlideShow(inputNum = 0) {
+    console.log(inputNum);
+    this.setState({ slideshow: true, currentId: inputNum });
+  }
+
+  closeSlideShow() {
+    this.setState({ slideshow: false });
+  }
+
   render() {
     // hero photo
     // small photos
     // if 3 photos or less, hero photo is 2/3 of page width
     // page dynamically renders if width falls below certain amount
-    const { photos } = this.state;
+    const { photos, slideshow, currentId } = this.state;
     const buttons = [
-      <SharePhotosButton>⇪ Share</SharePhotosButton>,
-      <SaveButton>♡ Save</SaveButton>,
-      <ViewPhotosButton>View Photos</ViewPhotosButton>
+      <SharePhotosButton key='share'>⇪ Share</SharePhotosButton>,
+      <SaveButton key='save'>♡ Save</SaveButton>,
+      <ViewPhotosButton key='view' onClick={() => this.openSlideShow(0)}>View Photos</ViewPhotosButton>,
     ];
+    if (slideshow) {
+      return <SlideShow photos={photos} closeSlideShow={this.closeSlideShow} currentId={currentId} />;
+    }
     if (photos.length > 0) {
       if (photos.length === 1) {
         return (
           <PhotosModuleDiv>
             {buttons}
-            <HeroImageDivFull>
+            <HeroImageDivFull onClick={() => this.openSlideShow(0)}>
               <MainImage src={photos[0].url} alt="Main display" />
             </HeroImageDivFull>
           </PhotosModuleDiv>
@@ -116,10 +137,10 @@ class Photos extends React.Component {
       return (
         <PhotosModuleDiv>
           {buttons}
-          <HeroImageDiv>
+          <HeroImageDiv onClick={() => this.openSlideShow()}>
             <MainImage src={photos[0].url} alt="Main display" />
           </HeroImageDiv>
-          <PhotosGrid photos={photos} />
+          <PhotosGrid photos={photos} openSlideShow={this.openSlideShow} />
         </PhotosModuleDiv>
       );
     }

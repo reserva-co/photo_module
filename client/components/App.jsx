@@ -1,5 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 import Photos from './Photos.jsx';
+
+const H3Message = styled.h3`
+  font-family: helvetica, arial, "sans serif";
+  letter-spacing: 2px;
+  margin-left: 40px;
+  color: #aaa;
+`;
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +20,6 @@ class App extends React.Component {
   componentDidMount() {
     const genNum = Math.floor(Math.random() * 100);
     this.setState({ listingId: genNum });
-    console.log('End of App mount', genNum);
   }
 
   render() {
@@ -22,7 +29,7 @@ class App extends React.Component {
         <div>
           <Photos listingId={listingId} />
           <br />
-          <h3>App loaded</h3>
+          <H3Message>cozy getaway birdhouse</H3Message>
         </div>
       );
     }
