@@ -60,7 +60,7 @@ const MainImage = styled.img`
 const GalleryImgDiv = styled.div`
   display: block;
   width: 250px;
-  height: 50px;
+  height: 54px;
   overflow: hidden;
   margin-bottom: 20px;
 `;
@@ -70,6 +70,12 @@ const GalleryImg = styled.img`
   width: 50px;
   border-radius: 5px;
   margin-right: 5px;
+  border: 2px solid;
+  border-color: #f9f9f9;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const BigX = styled.div`
@@ -89,6 +95,7 @@ class SlideShow extends React.Component {
     };
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);
+    this.viewGalleryImage = this.viewGalleryImage.bind(this);
   }
 
   nextImage() {
@@ -111,6 +118,11 @@ class SlideShow extends React.Component {
     }
   }
 
+  viewGalleryImage(newPicId) {
+    console.log(newPicId);
+    this.setState({ current: this.props.photos[newPicId] });
+  }
+
   render() {
     const { photos, closeSlideShow } = this.props;
     const { current } = this.state;
@@ -127,7 +139,7 @@ class SlideShow extends React.Component {
           <BigX onClick={closeSlideShow}>✕</BigX>
           <br />
           <GalleryImgDiv>
-            {photos.map((photo) => (<GalleryImg src={photo.url} key={photo.slide_id} />))}
+            {photos.map((photo) => (<GalleryImg src={photo.url} key={photo.slide_id} current={current.slide_id} onClick={() => this.viewGalleryImage(photo.slide_id)} />))}
           </GalleryImgDiv>
           <br />
           <span style={{ fontWeight: 'bold' }}>

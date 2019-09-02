@@ -116,7 +116,7 @@ class Photos extends React.Component {
     const buttons = [
       <SharePhotosButton key='share'>⇪ Share</SharePhotosButton>,
       <SaveButton key='save'>♡ Save</SaveButton>,
-      <ViewPhotosButton key='view'>View Photos</ViewPhotosButton>,
+      <ViewPhotosButton key='view' onClick={this.openSlideShow}>View Photos</ViewPhotosButton>,
     ];
     if (slideshow) {
       return <SlideShow photos={photos} closeSlideShow={this.closeSlideShow} />;
