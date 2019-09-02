@@ -60,18 +60,22 @@ const MainImage = styled.img`
 const GalleryImgDiv = styled.div`
   display: block;
   width: 250px;
-  height: 54px;
+  height: 64px;
   overflow: hidden;
   margin-bottom: 20px;
+  white-space: nowrap;
 `;
 
 const GalleryImg = styled.img`
   height: 50px;
   width: 50px;
+  display: inline-block;
   border-radius: 5px;
   margin-right: 5px;
   border: 2px solid;
   border-color: #f9f9f9;
+  position: relative;
+  left: ${(props) => `${props.current * -59}px`};
 
   &:hover {
     cursor: pointer;
@@ -91,7 +95,7 @@ class SlideShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      current: this.props.photos[0],
+      current: this.props.photos[this.props.currentId],
     };
     this.nextImage = this.nextImage.bind(this);
     this.prevImage = this.prevImage.bind(this);

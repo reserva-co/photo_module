@@ -33,7 +33,7 @@ class PhotosGridEntry extends React.Component {
     const { photo, openSlideShow, wideGrid, fullGrid } = this.props;
     return (
       <PhotosGridDiv photo={photo} wideGrid={wideGrid} fullGrid={fullGrid} >
-        <PhotosGridImg src={photo.url} alt={photo.desc} onClick={openSlideShow}/>
+        <PhotosGridImg src={photo.url} alt={photo.desc} onClick={() => openSlideShow(photo.slide_id)}/>
       </PhotosGridDiv>
     )
   }
