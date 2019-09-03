@@ -123,7 +123,6 @@ class SlideShow extends React.Component {
   }
 
   viewGalleryImage(newPicId) {
-    console.log(newPicId);
     this.setState({ current: this.props.photos[newPicId] });
   }
 
@@ -143,7 +142,14 @@ class SlideShow extends React.Component {
           <BigX onClick={closeSlideShow}>✕</BigX>
           <br />
           <GalleryImgDiv>
-            {photos.map((photo) => (<GalleryImg src={photo.url} key={photo.slide_id} current={current.slide_id} onClick={() => this.viewGalleryImage(photo.slide_id)} />))}
+            {photos.map((photo) => (
+              <GalleryImg
+                src={photo.url} 
+                key={photo.slide_id}
+                current={current.slide_id}
+                onClick={() => this.viewGalleryImage(photo.slide_id)}
+              />
+            ))}
           </GalleryImgDiv>
           <br />
           <span style={{ fontWeight: 'bold' }}>

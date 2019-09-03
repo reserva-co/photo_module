@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 const PhotosGridDiv = styled.div`
   float: left;
   box-sizing: border-box;
-  width: ${props => (props.wideGrid ? '100%' : '50%')};
-  height: ${props => (props.fullGrid ? '100%' : '175px')};
+  width: ${(props) => (props.wideGrid ? '100%' : '50%')};
+  height: ${(props) => (props.fullGrid ? '100%' : '175px')};
   border: 1px solid #444;
   margin: none;
   padding: none;
@@ -21,25 +21,26 @@ const PhotosGridImg = styled.img`
   margin: none;
 `;
 
-class PhotosGridEntry extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
-
-  render() {
-    const { photo, openSlideShow, wideGrid, fullGrid } = this.props;
-    return (
-      <PhotosGridDiv photo={photo} wideGrid={wideGrid} fullGrid={fullGrid} >
-        <PhotosGridImg src={photo.url} alt={photo.desc} onClick={() => openSlideShow(photo.slide_id)}/>
-      </PhotosGridDiv>
-    )
-  }
+function PhotosGridEntry(props) {
+  // eslint-disable-next-line object-curly-newline
+  const { photo, openSlideShow, wideGrid, fullGrid } = props;
+  return (
+    <PhotosGridDiv photo={photo} wideGrid={wideGrid} fullGrid={fullGrid}>
+      <PhotosGridImg
+        src={photo.url}
+        alt={photo.desc}
+        onClick={() => openSlideShow(photo.slide_id)}
+      />
+    </PhotosGridDiv>
+  );
 }
 
 PhotosGridEntry.propTypes = {
+  // eslint-disable-next-line react/forbid-prop-types
+  photo: PropTypes.object.isRequired,
+  openSlideShow: PropTypes.func.isRequired,
+  wideGrid: PropTypes.bool.isRequired,
+  fullGrid: PropTypes.bool.isRequired,
 };
 
 

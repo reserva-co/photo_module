@@ -12,7 +12,7 @@ describe('<App />', () => {
     const wrapper = shallow(
       <App />
     );
-    expect(wrapper.find('h3')).toHaveLength(1);
+    expect(wrapper.find('App__H3Message')).toHaveLength(1);
   });
 });
 
