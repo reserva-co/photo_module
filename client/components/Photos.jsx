@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PhotosGrid from './PhotosGrid.jsx';
 import SlideShow from './SlideShow.jsx';
 import ShareModal from './Share.jsx';
+import SaveModal from './Save.jsx';
 
 const PhotosModuleDiv = styled.div`
   display: block;
@@ -85,6 +86,7 @@ class Photos extends React.Component {
       slideshow: false,
       currentId: null,
       share: false,
+      save: true,
     };
     this.openSlideShow = this.openSlideShow.bind(this);
     this.closeSlideShow = this.closeSlideShow.bind(this);
@@ -120,10 +122,10 @@ class Photos extends React.Component {
     // small photos
     // if 3 photos or less, hero photo is 2/3 of page width
     // page dynamically renders if width falls below certain amount
-    const { photos, slideshow, currentId, share } = this.state;
+    const { photos, slideshow, currentId, share, save } = this.state;
     const buttons = [
       <SharePhotosButton key="share" onClick={() => this.toggleModal('share')}>⇪ Share</SharePhotosButton>,
-      <SaveButton key="save">♡ Save</SaveButton>,
+      <SaveButton key="save" onClick={() => this.toggleModal('save')}>♡ Save</SaveButton>,
       <ViewPhotosButton key="view" onClick={() => this.openSlideShow(0)}>View Photos</ViewPhotosButton>,
     ];
     if (slideshow) {
@@ -139,6 +141,7 @@ class Photos extends React.Component {
       if (photos.length === 1) {
         return (
           <PhotosModuleDiv>
+            { share && <ShareModal toggleModal={this.toggleModal} />}
             {buttons}
             <HeroImageDivFull onClick={() => this.openSlideShow()}>
               <MainImage src={photos[0].url} alt="Main display" />
@@ -148,7 +151,8 @@ class Photos extends React.Component {
       }
       return (
         <PhotosModuleDiv>
-          { share ? <ShareModal toggleModal={this.toggleModal} /> : ''}
+          { share && <ShareModal toggleModal={this.toggleModal} />}
+          { save && <SaveModal src={photos[0].url} toggleModal={this.toggleModal} />}
           {buttons}
           <HeroImageDiv onClick={() => this.openSlideShow()}>
             <MainImage src={photos[0].url} alt="Main display" />

@@ -14,6 +14,10 @@ const GrayContainer = styled.div`
   letter-spacing: 1px;
   z-index: 10;
   padding-top: 7%;
+    
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const ShareBox = styled.div`
@@ -22,7 +26,7 @@ const ShareBox = styled.div`
   background: #fff;
   display: block;
   box-sizing: border-box;
-  width: 350px;
+  width: 400px;
   margin: auto;
   margin-bottom: 50px;
   padding: 15px 40px 40px 0;
@@ -34,6 +38,10 @@ const BigX = styled.span`
   display: inline-block;
   margin-top: 15px;
   color: #666;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const List = styled.li`
@@ -46,6 +54,7 @@ const List = styled.li`
 
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 
