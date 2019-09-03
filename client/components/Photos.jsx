@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import PhotosGrid from './PhotosGrid.jsx';
 import SlideShow from './SlideShow.jsx';
+import ShareModal from './Share.jsx';
 
 const PhotosModuleDiv = styled.div`
   display: block;
@@ -83,9 +84,11 @@ class Photos extends React.Component {
       photos: [],
       slideshow: false,
       currentId: null,
+      share: false,
     };
     this.openSlideShow = this.openSlideShow.bind(this);
     this.closeSlideShow = this.closeSlideShow.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidMount() {
@@ -108,14 +111,18 @@ class Photos extends React.Component {
     this.setState({ slideshow: false });
   }
 
+  toggleModal(modal) {
+    this.setState({ [modal]: !this.state[modal] });
+  }
+
   render() {
     // hero photo
     // small photos
     // if 3 photos or less, hero photo is 2/3 of page width
     // page dynamically renders if width falls below certain amount
-    const { photos, slideshow, currentId } = this.state;
+    const { photos, slideshow, currentId, share } = this.state;
     const buttons = [
-      <SharePhotosButton key="share">⇪ Share</SharePhotosButton>,
+      <SharePhotosButton key="share" onClick={() => this.toggleModal('share')}>⇪ Share</SharePhotosButton>,
       <SaveButton key="save">♡ Save</SaveButton>,
       <ViewPhotosButton key="view" onClick={() => this.openSlideShow(0)}>View Photos</ViewPhotosButton>,
     ];
@@ -141,6 +148,7 @@ class Photos extends React.Component {
       }
       return (
         <PhotosModuleDiv>
+          { share ? <ShareModal toggleModal={this.toggleModal} /> : ''}
           {buttons}
           <HeroImageDiv onClick={() => this.openSlideShow()}>
             <MainImage src={photos[0].url} alt="Main display" />
