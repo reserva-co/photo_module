@@ -49,7 +49,7 @@ const List = styled.li`
   padding: 25px;
   padding-left: 0px;
   color: #007777;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
   text-align: left;
 
   &:hover {
