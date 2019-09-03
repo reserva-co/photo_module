@@ -54,7 +54,7 @@ const FloatButton = styled.div`
   top: 20px;
   padding: 10px 15px;
   border-radius: 4px;
-  z-index: 100;
+  z-index: 9;
   font-family: helvetica, arial, 'sans serif';
   font-size: 14px;
   line-height: 17px;
