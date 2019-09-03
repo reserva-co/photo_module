@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PhotosGrid from './PhotosGrid.jsx';
 import SlideShow from './SlideShow.jsx';
 import ShareModal from './Share.jsx';
+import SaveModal from './Save.jsx';
 
 const PhotosModuleDiv = styled.div`
   display: block;
@@ -85,10 +86,13 @@ class Photos extends React.Component {
       slideshow: false,
       currentId: null,
       share: false,
+      save: false,
+      favorite: false,
     };
     this.openSlideShow = this.openSlideShow.bind(this);
     this.closeSlideShow = this.closeSlideShow.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
+    this.toggleFavorite = this.toggleFavorite.bind(this);
   }
 
   componentDidMount() {
@@ -115,15 +119,23 @@ class Photos extends React.Component {
     this.setState({ [modal]: !this.state[modal] });
   }
 
+  toggleFavorite() {
+    this.setState({ favorite: !this.state.favorite });
+    console.log('Click favorite!');
+  }
+
   render() {
     // hero photo
     // small photos
     // if 3 photos or less, hero photo is 2/3 of page width
     // page dynamically renders if width falls below certain amount
-    const { photos, slideshow, currentId, share } = this.state;
+    const { photos, slideshow, currentId, share, save, favorite } = this.state;
     const buttons = [
       <SharePhotosButton key="share" onClick={() => this.toggleModal('share')}>⇪ Share</SharePhotosButton>,
-      <SaveButton key="save">♡ Save</SaveButton>,
+      <SaveButton key="save" onClick={() => this.toggleModal('save')}>
+        {favorite ? <span style={{"color": "red", "fontSize": "14px", "fontFamily": "helvetica"}}>♥ </span> : '♡ '}
+        Save
+      </SaveButton>,
       <ViewPhotosButton key="view" onClick={() => this.openSlideShow(0)}>View Photos</ViewPhotosButton>,
     ];
     if (slideshow) {
@@ -139,6 +151,9 @@ class Photos extends React.Component {
       if (photos.length === 1) {
         return (
           <PhotosModuleDiv>
+            { share && <ShareModal toggleModal={this.toggleModal} />}
+            { save && <SaveModal src={photos[0].url} toggleModal={this.toggleModal} toggleFavorite={this.toggleFavorite} favorite={favorite} />}
+          {buttons}
             {buttons}
             <HeroImageDivFull onClick={() => this.openSlideShow()}>
               <MainImage src={photos[0].url} alt="Main display" />
@@ -148,7 +163,8 @@ class Photos extends React.Component {
       }
       return (
         <PhotosModuleDiv>
-          { share ? <ShareModal toggleModal={this.toggleModal} /> : ''}
+          { share && <ShareModal toggleModal={this.toggleModal} />}
+          { save && <SaveModal src={photos[0].url} toggleModal={this.toggleModal} toggleFavorite={this.toggleFavorite} favorite={favorite} />}
           {buttons}
           <HeroImageDiv onClick={() => this.openSlideShow()}>
             <MainImage src={photos[0].url} alt="Main display" />

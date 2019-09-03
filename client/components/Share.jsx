@@ -2,17 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GrayContainer = styled.div`
-  position: absolute;
+  position: fixed;
   background: rgb(0, 0, 0, 0.75);
   display: block;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
   text-align: center;
   vertical-align: center;
   font-family: 'Century Gothic', helvetica, arial;
   letter-spacing: 1px;
   z-index: 10;
   padding-top: 7%;
+    
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const ShareBox = styled.div`
@@ -21,8 +26,9 @@ const ShareBox = styled.div`
   background: #fff;
   display: block;
   box-sizing: border-box;
-  width: 350px;
+  width: 400px;
   margin: auto;
+  margin-bottom: 50px;
   padding: 15px 40px 40px 0;
 `;
 
@@ -32,6 +38,10 @@ const BigX = styled.span`
   display: inline-block;
   margin-top: 15px;
   color: #666;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const List = styled.li`
@@ -39,11 +49,12 @@ const List = styled.li`
   padding: 25px;
   padding-left: 0px;
   color: #007777;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #eee;
   text-align: left;
 
   &:hover {
     text-decoration: underline;
+    cursor: pointer;
   }
 `;
 
