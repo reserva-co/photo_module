@@ -101,7 +101,6 @@ class Photos extends React.Component {
   }
 
   openSlideShow(inputNum = 0) {
-    console.log(inputNum);
     this.setState({ slideshow: true, currentId: inputNum });
   }
 
@@ -116,19 +115,25 @@ class Photos extends React.Component {
     // page dynamically renders if width falls below certain amount
     const { photos, slideshow, currentId } = this.state;
     const buttons = [
-      <SharePhotosButton key='share'>⇪ Share</SharePhotosButton>,
-      <SaveButton key='save'>♡ Save</SaveButton>,
-      <ViewPhotosButton key='view' onClick={() => this.openSlideShow(0)}>View Photos</ViewPhotosButton>,
+      <SharePhotosButton key="share">⇪ Share</SharePhotosButton>,
+      <SaveButton key="save">♡ Save</SaveButton>,
+      <ViewPhotosButton key="view" onClick={() => this.openSlideShow(0)}>View Photos</ViewPhotosButton>,
     ];
     if (slideshow) {
-      return <SlideShow photos={photos} closeSlideShow={this.closeSlideShow} currentId={currentId} />;
+      return (
+        <SlideShow
+          photos={photos}
+          closeSlideShow={this.closeSlideShow}
+          currentId={currentId}
+        />
+      );
     }
     if (photos.length > 0) {
       if (photos.length === 1) {
         return (
           <PhotosModuleDiv>
             {buttons}
-            <HeroImageDivFull onClick={() => this.openSlideShow(0)}>
+            <HeroImageDivFull onClick={() => this.openSlideShow()}>
               <MainImage src={photos[0].url} alt="Main display" />
             </HeroImageDivFull>
           </PhotosModuleDiv>
