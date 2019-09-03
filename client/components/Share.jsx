@@ -2,11 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GrayContainer = styled.div`
-  position: absolute;
+  position: fixed;
   background: rgb(0, 0, 0, 0.75);
   display: block;
   width: 100%;
   height: 100%;
+  overflow-y: auto;
   text-align: center;
   vertical-align: center;
   font-family: 'Century Gothic', helvetica, arial;
@@ -23,6 +24,7 @@ const ShareBox = styled.div`
   box-sizing: border-box;
   width: 350px;
   margin: auto;
+  margin-bottom: 50px;
   padding: 15px 40px 40px 0;
 `;
 
