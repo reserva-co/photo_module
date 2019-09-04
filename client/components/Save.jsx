@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 const WhiteContainer = styled.div`
   display: block;

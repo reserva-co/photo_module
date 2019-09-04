@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+// import styled from 'styled-components';
 import Photos from './Photos.jsx';
 
 const H3Message = styled.h3`

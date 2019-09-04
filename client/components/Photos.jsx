@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import PhotosGrid from './PhotosGrid.jsx';
 import SlideShow from './SlideShow.jsx';
 import ShareModal from './Share.jsx';
