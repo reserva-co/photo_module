@@ -96,10 +96,8 @@ class Photos extends React.Component {
   }
 
   componentDidMount() {
-    const { listingId } = this.props;
-    console.log('ID Photos mount:', listingId);
-    axios.get(`/api/${listingId}`)
-    // axios.get(`/api/88`)
+    const listingId = this.props.listingId || 3;
+    axios.get(`http://localhost:3004/api/${listingId} `)
       .then((info) => {
         this.setState({ photos: info.data[0].images });
         console.log('Photos', info.data[0].images.length);

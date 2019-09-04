@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'development',
-  entry: './client/components/App.jsx',
+  entry: './client/components/Photos.jsx',
   output: {
     filename: 'bundle.js',
     path: __dirname + '/public/',
