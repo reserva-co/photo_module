@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 
 const GrayContainer = styled.div`
   position: fixed;

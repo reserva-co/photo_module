@@ -1,5 +1,4 @@
 import React from 'react';
-// import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Container = styled.div`
@@ -12,6 +11,7 @@ const Container = styled.div`
   height: 100%;
   min-height: 300px;
   background: #f9f9f9;
+  z-index: 15;
 `;
 
 const Display = styled.div`
