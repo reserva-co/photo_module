@@ -1,9 +1,10 @@
 module.exports = {
   mode: 'development',
-  entry: './client/index.js',
+  entry: './client/components/App.jsx',
   output: {
     filename: 'bundle.js',
     path: __dirname + '/public/',
+    library: 'Photos',
   },
   module: {
     rules: [
