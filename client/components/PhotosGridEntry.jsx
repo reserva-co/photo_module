@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -19,6 +20,7 @@ const PhotosGridImg = styled.img`
   min-height: 175px;
   height: auto;
   margin: none;
+  transition: width 1s;
   
   &:hover {
     width: 110%;
@@ -30,13 +32,16 @@ const PhotosGridImg = styled.img`
 
 function PhotosGridEntry(props) {
   // eslint-disable-next-line object-curly-newline
-  const { photo, openSlideShow, wideGrid, fullGrid } = props;
+  const { photo, openSlideShow, wideGrid, fullGrid, hoverEffect } = props;
   return (
     <PhotosGridDiv photo={photo} wideGrid={wideGrid} fullGrid={fullGrid}>
       <PhotosGridImg
         src={photo.url}
         alt={photo.desc}
         onClick={() => openSlideShow(photo.slide_id)}
+        className='hoverPhoto'
+        onMouseOver={() => { hoverEffect(photo.slide_id, false); }}
+        onMouseOut={() => { hoverEffect(photo.slide_id, true); }}
       />
     </PhotosGridDiv>
   );

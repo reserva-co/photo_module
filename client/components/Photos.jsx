@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/mouse-events-have-key-events */
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
@@ -25,6 +26,7 @@ const HeroImageDiv = styled.div`
   float: left;
   box-sizing: border-box;
   width: 50%;
+  background: #000;
   height: 350px;
   border: 1px solid #444;
   overflow: hidden;
@@ -37,11 +39,11 @@ const HeroImageDivFull = styled(HeroImageDiv)`
 
 const MainImage = styled.img`
   width: 100%;
-  background: #000;
   min-width: 425px;
   min-height: 350px;
   height: auto;
   margin: none;
+  transition: width 1s;
 
   &:hover {
     width: 105%;
@@ -94,11 +96,13 @@ class Photos extends React.Component {
       share: false,
       save: false,
       favorite: false,
+      hover: [],
     };
     this.openSlideShow = this.openSlideShow.bind(this);
     this.closeSlideShow = this.closeSlideShow.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.toggleFavorite = this.toggleFavorite.bind(this);
+    this.hoverEffect = this.hoverEffect.bind(this);
   }
 
   componentDidMount() {
@@ -107,8 +111,20 @@ class Photos extends React.Component {
       .then((info) => {
         this.setState({ photos: info.data[0].images });
         console.log('Photos', info.data[0].images.length);
+        let hoverTemp = document.getElementsByClassName('hoverPhoto');
+        this.setState({ hover: hoverTemp });
       })
       .catch((err) => { console.log(err); });
+  }
+
+  hoverEffect(imgNum, effect) {
+    let opacitySet = effect ? "1" : "0.6";
+    for (let i = 0; i < this.state.hover.length; i++) {
+      if (i !== imgNum) {
+        $(this.state.hover[i]).animate({"opacity": opacitySet}, 500);
+        console.log(i);
+      }
+    }
   }
 
   openSlideShow(inputNum = 0) {
@@ -162,7 +178,12 @@ class Photos extends React.Component {
             <Navbar />
             {buttons}
             <HeroImageDivFull onClick={() => this.openSlideShow()}>
-              <MainImage src={photos[0].url} alt="Main display" />
+              <MainImage src={photos[0].url}
+                alt="Main display"
+                className='hoverPhoto'
+                onMouseOver={() => this.hoverEffect(0, false)}
+                onMouseOut={() => this.hoverEffect(0, true)}
+              />
             </HeroImageDivFull>
           </PhotosModuleDiv>
         );
@@ -174,9 +195,15 @@ class Photos extends React.Component {
           <Navbar />
           {buttons}
           <HeroImageDiv onClick={() => this.openSlideShow()}>
-            <MainImage src={photos[0].url} alt="Main display" />
+            <MainImage
+              src={photos[0].url}
+              alt="Main display"
+              className="hoverPhoto"
+              onMouseOver={() => this.hoverEffect(0, false)}
+              onMouseOut={() => this.hoverEffect(0, true)}
+            />
           </HeroImageDiv>
-          <PhotosGrid photos={photos} openSlideShow={this.openSlideShow} />
+          <PhotosGrid photos={photos} openSlideShow={this.openSlideShow} hoverEffect={this.hoverEffect} />
         </PhotosModuleDiv>
       );
     }

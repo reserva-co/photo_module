@@ -19,7 +19,7 @@ class PhotosGrid extends React.Component {
 
   render() {
     // photo grid
-    const { photos, openSlideShow } = this.props;
+    const { photos, openSlideShow, hoverEffect } = this.props;
     let maxDisplay;
     let wideGrid = false;
     let fullGrid = false;
@@ -42,6 +42,7 @@ class PhotosGrid extends React.Component {
           wideGrid={wideGrid}
           fullGrid={fullGrid}
           openSlideShow={openSlideShow}
+          hoverEffect={hoverEffect}
         />
       );
       imageArray.push(photoGridEntryTemp);
