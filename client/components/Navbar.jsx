@@ -31,8 +31,8 @@ function Navbar(props) {
   return (
     <NavbarDiv>
       <div>
-        <img src='https://i.imgur.com/JRL1rXp.png' width="61px" height="70px"/>
-        <img src='https://i.imgur.com/VoCShxQ.png' width="492px" height="65px" />
+        <img src="https://birdhouse325.s3-us-west-1.amazonaws.com/logo.png" width="61px" height="70px" alt="Reserva logo" />
+        <img src="https://birdhouse325.s3-us-west-1.amazonaws.com/searchbar.png" width="492px" height="65px" alt="Search bar" />
       </div>
       <RightLinkBox>
         <RightLinks>Become a host</RightLinks>

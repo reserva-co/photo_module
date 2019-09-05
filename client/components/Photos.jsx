@@ -11,7 +11,7 @@ const PhotosModuleDiv = styled.div`
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 420px;
+  height: 422px;
   padding: none;
   margin: none;
   overflow: hidden;
@@ -41,6 +41,11 @@ const MainImage = styled.img`
   min-height: 350px;
   height: auto;
   margin: none;
+
+  &:hover {
+    width: 105%;
+    transition: width 1s;
+  }
 `;
 
 const FloatButton = styled.div`

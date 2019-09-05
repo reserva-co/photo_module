@@ -18,6 +18,13 @@ const PhotosGridImg = styled.img`
   min-height: 175px;
   height: auto;
   margin: none;
+  
+  &:hover {
+    width: 110%;
+    position: relative;
+    transition-property: width;
+    transition-duration: 1s;
+  };
 `;
 
 function PhotosGridEntry(props) {
