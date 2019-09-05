@@ -5,12 +5,13 @@ import PhotosGrid from './PhotosGrid.jsx';
 import SlideShow from './SlideShow.jsx';
 import ShareModal from './Share.jsx';
 import SaveModal from './Save.jsx';
+import Navbar from './Navbar.jsx';
 
 const PhotosModuleDiv = styled.div`
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: 350px;
+  height: 420px;
   padding: none;
   margin: none;
   overflow: hidden;
@@ -50,7 +51,7 @@ const FloatButton = styled.div`
   background: #fff;
   position: absolute;
   right: 25px;
-  top: 20px;
+  top: 95px;
   padding: 10px 15px;
   border-radius: 4px;
   z-index: 9;
@@ -74,7 +75,7 @@ const SaveButton = styled(FloatButton)`
 `;
 
 const ViewPhotosButton = styled(FloatButton)`
-  top: 290px;
+  top: 360px;
 `;
 
 class Photos extends React.Component {
@@ -106,10 +107,12 @@ class Photos extends React.Component {
 
   openSlideShow(inputNum = 0) {
     this.setState({ slideshow: true, currentId: inputNum });
+    document.documentElement.style.overflow = 'hidden';
   }
 
   closeSlideShow() {
     this.setState({ slideshow: false });
+    document.documentElement.style.overflow = 'auto';
   }
 
   toggleModal(modal) {
@@ -150,7 +153,7 @@ class Photos extends React.Component {
           <PhotosModuleDiv>
             { share && <ShareModal toggleModal={this.toggleModal} />}
             { save && <SaveModal src={photos[0].url} toggleModal={this.toggleModal} toggleFavorite={this.toggleFavorite} favorite={favorite} />}
-          {buttons}
+            <Navbar />
             {buttons}
             <HeroImageDivFull onClick={() => this.openSlideShow()}>
               <MainImage src={photos[0].url} alt="Main display" />
@@ -162,6 +165,7 @@ class Photos extends React.Component {
         <PhotosModuleDiv>
           { share && <ShareModal toggleModal={this.toggleModal} />}
           { save && <SaveModal src={photos[0].url} toggleModal={this.toggleModal} toggleFavorite={this.toggleFavorite} favorite={favorite} />}
+          <Navbar />
           {buttons}
           <HeroImageDiv onClick={() => this.openSlideShow()}>
             <MainImage src={photos[0].url} alt="Main display" />
