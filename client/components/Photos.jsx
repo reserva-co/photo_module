@@ -37,6 +37,7 @@ const HeroImageDivFull = styled(HeroImageDiv)`
 
 const MainImage = styled.img`
   width: 100%;
+  background: #000;
   min-width: 425px;
   min-height: 350px;
   height: auto;

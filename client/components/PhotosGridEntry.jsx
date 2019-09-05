@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 const PhotosGridDiv = styled.div`
   float: left;
   box-sizing: border-box;
+  background: #000;
   width: ${(props) => (props.wideGrid ? '100%' : '50%')};
   height: ${(props) => (props.fullGrid ? '100%' : '175px')};
   border: 1px solid #444;

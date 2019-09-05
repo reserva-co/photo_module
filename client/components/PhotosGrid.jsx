@@ -35,7 +35,16 @@ class PhotosGrid extends React.Component {
     }
     const imageArray = [];
     for (let i = 1; i < maxDisplay; i+= 1) {
-      imageArray.push(<PhotosGridEntry key={photos[i].slide_id} photo={photos[i]} wideGrid={wideGrid} fullGrid={fullGrid} openSlideShow={openSlideShow}/>)
+      let photoGridEntryTemp = (
+        <PhotosGridEntry
+          key={photos[i].slide_id}
+          photo={photos[i]}
+          wideGrid={wideGrid}
+          fullGrid={fullGrid}
+          openSlideShow={openSlideShow}
+        />
+      );
+      imageArray.push(photoGridEntryTemp);
     }
     return (
       <GridDiv>
