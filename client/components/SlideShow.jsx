@@ -76,6 +76,7 @@ const GalleryImg = styled.img`
   border-color: #f9f9f9;
   position: relative;
   left: ${(props) => `${props.current * -59}px`};
+  transition: left 0.5s;
 
   &:hover {
     cursor: pointer;

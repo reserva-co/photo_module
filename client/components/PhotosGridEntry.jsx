@@ -16,17 +16,17 @@ const PhotosGridDiv = styled.div`
 
 const PhotosGridImg = styled.img`
   width: 100%;
+  opacity: 1;
   min-width: 225px;
   min-height: 175px;
   height: auto;
   margin: none;
-  transition: width 1s;
+  transition: opacity 1s, width 1s;
   
   &:hover {
     width: 110%;
     position: relative;
-    transition-property: width;
-    transition-duration: 1s;
+    transition: width 1s;
   };
 `;
 
