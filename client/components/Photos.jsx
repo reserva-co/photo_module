@@ -12,6 +12,7 @@ const PhotosModuleDiv = styled.div`
   display: block;
   box-sizing: border-box;
   width: 100%;
+  min-width: 900px;
   height: 422px;
   padding: none;
   margin: none;
@@ -39,15 +40,16 @@ const HeroImageDivFull = styled(HeroImageDiv)`
 
 const MainImage = styled.img`
   width: 100%;
+  opacity: 1.0;
   min-width: 425px;
   min-height: 350px;
   height: auto;
   margin: none;
-  transition: width 1s;
+  transition: opacity 1s, width 1s;
 
   &:hover {
     width: 105%;
-    transition: width 1s;
+    width 1s;
   }
 `;
 
@@ -121,7 +123,7 @@ class Photos extends React.Component {
     let opacitySet = effect ? "1" : "0.6";
     for (let i = 0; i < this.state.hover.length; i++) {
       if (i !== imgNum) {
-        $(this.state.hover[i]).animate({"opacity": opacitySet}, 500);
+        this.state.hover[i].style.opacity = opacitySet;
         console.log(i);
       }
     }

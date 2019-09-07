@@ -3,13 +3,22 @@ import React from 'react';
 const NavbarDiv = styled.div`
   height: 70px;
   width: 100%;
+  min-width: 950px;
   display: inline-flex;
   align-items: center;
   justify-content: space-between;
+
+  &:hover {
+    cursor: default;
+  }
 `;
 
 const RightLinkBox = styled.div`
   margin-right: 20px;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const RightLinks = styled.span`
@@ -27,12 +36,37 @@ const RightLinks = styled.span`
   }
 `;
 
+const Logo = styled.img`
+  width: 61px;
+  height: 70px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+const InputBar = styled.input`
+  position: absolute;
+  background: #fff;
+  color: #404040;
+  border: none;
+  left: 115px;
+  top: 18px;
+  width: 415px;
+  height: 35px;
+  font-size: 16px;
+  outline: none;
+  font-family: Circular, Helvetica, Arial;
+  font-weight: 900;
+`;
+
 function Navbar(props) {
   return (
     <NavbarDiv>
       <div>
-        <img src="https://birdhouse325.s3-us-west-1.amazonaws.com/logo.png" width="61px" height="70px" alt="Reserva logo" />
-        <img src="https://birdhouse325.s3-us-west-1.amazonaws.com/searchbar.png" width="492px" height="65px" alt="Search bar" />
+        <Logo src="https://birdhouse325.s3-us-west-1.amazonaws.com/logo.png" alt="Reserva logo" />
+        <img src="https://birdhouse325.s3-us-west-1.amazonaws.com/searchbar.png" width="490px" height="65px" alt="Search bar" />
+        <InputBar type='text' placeholder='Search' />
       </div>
       <RightLinkBox>
         <RightLinks>Become a host</RightLinks>
