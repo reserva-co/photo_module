@@ -10,7 +10,7 @@ for (let i = 0; i < 100; i += 1) {
   }
   setTimeout(() => {
     request(`http://loremflickr.com/1024/768/birdhouse?num=${i}`)
-      .pipe(fs.createWriteStream(`birdhouse${i}.png`))
+      .pipe(fs.createWriteStream(`birdhouse${i}.jpg`))
       .on('error', (err) => {
         console.log(err);
       });

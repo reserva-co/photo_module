@@ -109,7 +109,7 @@ class Photos extends React.Component {
 
   componentDidMount() {
     const listingId = this.props.listingId || 3;
-    axios.get(`http://localhost:3004/api/${listingId} `)
+    axios.get(`http://54.67.24.50:3004/api/${listingId}`)
       .then((info) => {
         this.setState({ photos: info.data[0].images });
         console.log('Photos', info.data[0].images.length);
@@ -124,7 +124,6 @@ class Photos extends React.Component {
     for (let i = 0; i < this.state.hover.length; i++) {
       if (i !== imgNum) {
         this.state.hover[i].style.opacity = opacitySet;
-        console.log(i);
       }
     }
   }
